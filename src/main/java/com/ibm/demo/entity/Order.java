@@ -1,8 +1,19 @@
 package com.ibm.demo.entity;
+import javax.validation.constraints.NotNull;
 
 public class Order {
+	@NotNull
 	private String item;
 	private int price;
+	private int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getPrice() {
 		return price;
