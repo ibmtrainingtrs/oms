@@ -2,18 +2,26 @@ package com.ibm.demo.sevice;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import com.ibm.demo.List;
+
 
 import com.ibm.demo.entity.Order;
+import com.ibm.demo.repo.OrderRepository;
 
 @Service
 public class OrderService {
+	
+	@Autowired
+	OrderRepository orderRepository;
+	
 	public String createOrder(Order order) {
-		return "order created";
+		
+		Order savedOrder= orderRepository.save(order);
+		return savedOrder.getId();
 	}
 
 	public String getOrder() {
@@ -21,9 +29,9 @@ public class OrderService {
 		return "order 1";
 	}
 
-	public String updateOrder(int orderId) {
+	public void updateOrder(int orderId) {
 	
-		return "Order updated";
+		
 	}
 
 	public void deleteOrder(int orderId) {
@@ -35,6 +43,11 @@ public class OrderService {
 	public List<Order> getOrders() {
 		
 		return new ArrayList<Order>();
+	}
+
+	public Order getOrder(int orderID) {
+	
+		return new Order();
 	}
 
 }

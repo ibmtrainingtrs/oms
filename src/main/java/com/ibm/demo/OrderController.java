@@ -64,11 +64,11 @@ public class OrderController {
 	
 	
 	@PutMapping("/order/{id}")
-	String updateOrder(@RequestBody @Valid Order order, BindingResult bindingResult,@PathVariable("id") int orderId){
+	void updateOrder(@RequestBody @Valid Order order, BindingResult bindingResult,@PathVariable("id") int orderId){
 		validateModel(bindingResult);
 			
 	System.out.println(orderId);
-		return orderService.updateOrder(orderId);
+		 orderService.updateOrder(orderId);
 	}
 
 	@DeleteMapping("/order/{id}")
