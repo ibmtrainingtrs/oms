@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-
+import java.util.Optional;
 
 import com.ibm.demo.entity.Order;
 import com.ibm.demo.repo.OrderRepository;
@@ -29,9 +28,9 @@ public class OrderService {
 		return "order 1";
 	}
 
-	public void updateOrder(int orderId) {
+	public void updateOrder(Order order) {
 	
-		
+		orderRepository.save(order);
 	}
 
 	public void deleteOrder(int orderId) {
@@ -42,12 +41,12 @@ public class OrderService {
 
 	public List<Order> getOrders() {
 		
-		return new ArrayList<Order>();
+		return orderRepository.findAll();
 	}
 
-	public Order getOrder(int orderID) {
+	public Optional <Order> getOrder(String orderID) {
 	
-		return new Order();
+		return orderRepository.findById(orderID);
 	}
 
 }
